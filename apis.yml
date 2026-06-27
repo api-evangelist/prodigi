@@ -1,0 +1,124 @@
+aid: prodigi
+url: https://raw.githubusercontent.com/api-evangelist/prodigi/refs/heads/main/apis.yml
+name: Prodigi
+kind: company
+description: Prodigi is a global print-on-demand and dropshipping platform that connects
+  merchants to a worldwide network of print labs. The Prodigi Print API (v4.0) lets
+  developers create and manage print orders, fetch real-time quotes, and query the
+  product catalogue, with print and shipping fulfilled at wholesale prices direct
+  from the manufacturer.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Print on Demand
+- Printing
+- Dropshipping
+- Fulfillment
+- E-commerce
+created: '2026-06-25'
+modified: '2026-06-25'
+specificationVersion: '0.19'
+apis:
+- aid: prodigi:prodigi-orders-api
+  name: Prodigi Orders API
+  tags:
+  - Orders
+  - Fulfillment
+  - Print on Demand
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.prodigi.com/print-api/docs/reference/
+  baseURL: https://api.prodigi.com/v4.0
+  properties:
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: Documentation
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: APIReference
+  - url: openapi/prodigi-openapi.yml
+    type: OpenAPI
+  - url: collections/prodigi.postman_collection.json
+    type: PostmanCollection
+  - url: collections/prodigi.opencollection.json
+    type: OpenCollection
+  description: Create, retrieve, and list print orders, and run order actions - cancel,
+    update shipping method, update recipient, and update metadata - across Prodigi's
+    global print-on-demand fulfillment network.
+- aid: prodigi:prodigi-quotes-api
+  name: Prodigi Quotes API
+  tags:
+  - Quotes
+  - Pricing
+  - Shipping
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.prodigi.com/print-api/docs/reference/
+  baseURL: https://api.prodigi.com/v4.0
+  properties:
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: Documentation
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: APIReference
+  - url: openapi/prodigi-openapi.yml
+    type: OpenAPI
+  - url: collections/prodigi.postman_collection.json
+    type: PostmanCollection
+  - url: collections/prodigi.opencollection.json
+    type: OpenCollection
+  description: Returns a breakdown of pricing, lab allocation, and shipping arrangements
+    for a given set of items and destination, before an order is placed.
+- aid: prodigi:prodigi-product-details-api
+  name: Prodigi Product Details API
+  tags:
+  - Products
+  - Catalogue
+  - SKU
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.prodigi.com/print-api/docs/reference/
+  baseURL: https://api.prodigi.com/v4.0
+  properties:
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: Documentation
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: APIReference
+  - url: openapi/prodigi-openapi.yml
+    type: OpenAPI
+  - url: collections/prodigi.postman_collection.json
+    type: PostmanCollection
+  - url: collections/prodigi.opencollection.json
+    type: OpenCollection
+  description: Queries the core product catalogue by SKU, returning price, valid attributes,
+    available destinations, and asset and dimension requirements for each product.
+- aid: prodigi:prodigi-webhooks-callbacks
+  name: Prodigi Webhooks / Callbacks
+  tags:
+  - Webhooks
+  - Callbacks
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.prodigi.com/print-api/docs/reference/
+  baseURL: https://api.prodigi.com/v4.0
+  properties:
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: Documentation
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: APIReference
+  - url: openapi/prodigi-openapi.yml
+    type: OpenAPI
+  description: Per-order callbacks delivered to a merchant-supplied callbackUrl that
+    push order, status, and shipment updates as an order moves through Prodigi's
+    fulfillment stages.
+common:
+- type: GitHubOrganization
+  url: https://github.com/Prodigi-Group
+- type: LinkedIn
+  url: https://www.linkedin.com/company/prodigi
+- type: Website
+  url: https://www.prodigi.com
+- type: Documentation
+  url: https://www.prodigi.com/print-api/docs/
+- type: Plans
+  url: plans/prodigi-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/prodigi-rate-limits.yml
+- type: FinOps
+  url: finops/prodigi-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

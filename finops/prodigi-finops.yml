@@ -1,0 +1,92 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Prodigi
+providerId: prodigi
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Print on Demand
+- Printing
+- Dropshipping
+- Fulfillment
+- E-commerce
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Prodigi Print API spend. Prodigi charges no API, subscription,
+  or setup fee; cost is incurred per order as the wholesale print cost of each
+  product plus shipping, charged direct from the manufacturer. Per-item and
+  shipping prices vary by SKU, attributes, destination country, and shipping
+  method, and are returned by the Quotes endpoint before an order is placed.
+notes: >-
+  Per-SKU and per-destination rates change; verify against the Quotes and
+  Product Details endpoints during reconciliation. Sandbox usage is free.
+sources:
+- https://www.prodigi.com/print-api/
+- https://www.prodigi.com/print-api/docs/reference/
+- https://www.prodigi.com/faq/print-api/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Prodigi
+serviceCategory: Print and Fulfillment
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Per Order
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Prodigi Print API
+  ServiceCategory: Print and Fulfillment
+  ProviderName: Prodigi
+  PublisherName: Prodigi
+  InvoiceIssuerName: Prodigi
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: product_print_cost
+  description: Wholesale print cost per product item, billed per item per order, varying by SKU and attributes.
+  unit: items
+  aggregation: sum
+  dimensions:
+  - account
+  - sku
+  - order
+- name: shipping_cost
+  description: Shipping charge per shipment, varying by destination country and shipping method.
+  unit: shipments
+  aggregation: sum
+  dimensions:
+  - account
+  - destinationCountry
+  - shippingMethod
+- name: order_count
+  description: Number of orders submitted for fulfillment.
+  unit: orders
+  aggregation: sum
+  dimensions:
+  - account
+  - merchantReference
+principles:
+- name: Visibility
+  description: Quote every order via the Quotes endpoint before submitting to see itemized print and shipping costs.
+- name: Allocation
+  description: Tag orders with merchantReference and metadata to map fulfillment spend to products, stores, or cost centers.
+- name: Optimization
+  description: Choose the lowest adequate shipping method, batch items into single orders to consolidate shipping, and select SKUs and attributes that meet quality needs at lower wholesale cost.
+- name: Accountability
+  description: Reconcile per-order charges against quotes; review fulfillment spend per store and product monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

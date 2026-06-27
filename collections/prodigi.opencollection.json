@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prodigi Print API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{apiKey}}",
+      "in": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new print order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders",
+            "body": {
+              "type": "json",
+              "data": "{\"shippingMethod\":\"Standard\",\"recipient\":{\"name\":\"Jane Doe\",\"address\":{\"line1\":\"1 Example Street\",\"townOrCity\":\"London\",\"postalOrZipCode\":\"SW1A 1AA\",\"countryCode\":\"GB\"}},\"items\":[{\"sku\":\"GLOBAL-FAP-16x24\",\"copies\":1,\"sizing\":\"fillPrintArea\",\"assets\":[{\"printArea\":\"default\",\"url\":\"https://example.com/image.png\"}]}]}"
+            }
+          },
+          "docs": "Submits a new order for fulfillment with a recipient, items, and a shipping method."
+        },
+        {
+          "info": {
+            "name": "List orders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/orders?top=10&skip=0"
+          },
+          "docs": "Returns a paged list of orders for the given filtering options."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/orders/{{orderId}}"
+          },
+          "docs": "Retrieves a single order by its Prodigi order id."
+        },
+        {
+          "info": {
+            "name": "Get available actions for an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/orders/{{orderId}}/actions"
+          },
+          "docs": "Returns which actions are currently available for the order."
+        },
+        {
+          "info": {
+            "name": "Cancel an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/{{orderId}}/actions/cancel"
+          },
+          "docs": "Requests cancellation of an order."
+        },
+        {
+          "info": {
+            "name": "Update the shipping method of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/{{orderId}}/actions/updateShippingMethod",
+            "body": {
+              "type": "json",
+              "data": "{\"shippingMethod\":\"Express\"}"
+            }
+          },
+          "docs": "Updates the shipping method of an in-progress order."
+        },
+        {
+          "info": {
+            "name": "Update the recipient of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/{{orderId}}/actions/updateRecipient",
+            "body": {
+              "type": "json",
+              "data": "{\"name\":\"Jane Doe\",\"address\":{\"line1\":\"2 New Street\",\"townOrCity\":\"London\",\"postalOrZipCode\":\"SW1A 1AA\",\"countryCode\":\"GB\"}}"
+            }
+          },
+          "docs": "Updates the recipient details of an in-progress order."
+        },
+        {
+          "info": {
+            "name": "Update the metadata of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/{{orderId}}/actions/updateMetadata",
+            "body": {
+              "type": "json",
+              "data": "{\"metadata\":{\"campaign\":\"spring-sale\"}}"
+            }
+          },
+          "docs": "Updates the metadata hashtable on an order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a quote.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/quotes",
+            "body": {
+              "type": "json",
+              "data": "{\"shippingMethod\":\"Standard\",\"destinationCountryCode\":\"GB\",\"currencyCode\":\"GBP\",\"items\":[{\"sku\":\"GLOBAL-FAP-16x24\",\"copies\":1,\"assets\":[{\"printArea\":\"default\"}]}]}"
+            }
+          },
+          "docs": "Returns a breakdown of pricing, lab allocation, and shipping for the given items and destination."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get product details for a SKU.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/products/{{sku}}"
+          },
+          "docs": "Returns all available data for a SKU, including destinations, attributes, and asset requirements."
+        }
+      ]
+    }
+  ]
+}

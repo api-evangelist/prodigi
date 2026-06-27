@@ -1,0 +1,65 @@
+aid: prodigi
+name: Prodigi
+review:
+  question: Does Prodigi expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-25'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. The Prodigi Print API delivers
+    asynchronous order status updates via HTTP callbacks (webhooks) POSTed to
+    a merchant-supplied callbackUrl, not over WebSocket or Server-Sent Events.
+    HTTP callbacks are a server-to-server REST push and are not modeled as
+    AsyncAPI in this review.
+findings:
+  summary: |
+    Prodigi does not publish a documented public WebSocket API. The Prodigi
+    Print API (v4.0) is a RESTful, JSON-over-HTTPS API under
+    https://api.prodigi.com/v4.0 (sandbox https://api.sandbox.prodigi.com/v4.0),
+    authenticated with an X-API-Key header. Asynchronous order, status, and
+    shipment updates are delivered as HTTP callbacks (webhooks) POSTed to a
+    merchant-supplied callbackUrl set on order creation. No realtime,
+    bidirectional WebSocket (ws:// or wss://) endpoint is documented for
+    orders, quotes, products, or callbacks.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.prodigi.com/v4.0
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Per-order HTTP callbacks POSTed to a merchant-supplied callbackUrl. Server-to-server REST push, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Prodigi Print API reference as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://api.prodigi.com/v4.0/orders
+    - GET    https://api.prodigi.com/v4.0/orders
+    - GET    https://api.prodigi.com/v4.0/orders/{orderId}
+    - GET    https://api.prodigi.com/v4.0/orders/{orderId}/actions
+    - POST   https://api.prodigi.com/v4.0/orders/{orderId}/actions/cancel
+    - POST   https://api.prodigi.com/v4.0/orders/{orderId}/actions/updateShippingMethod
+    - POST   https://api.prodigi.com/v4.0/orders/{orderId}/actions/updateRecipient
+    - POST   https://api.prodigi.com/v4.0/orders/{orderId}/actions/updateMetadata
+    - POST   https://api.prodigi.com/v4.0/quotes
+    - GET    https://api.prodigi.com/v4.0/products/{sku}
+sources:
+  - url: https://www.prodigi.com/print-api/docs/reference/
+    type: APIReference
+    note: Lists REST base URL https://api.prodigi.com/v4.0 with X-API-Key auth; no WebSocket mentioned.
+  - url: https://www.prodigi.com/print-api/docs/
+    type: Documentation
+    note: Guides describe REST endpoints and HTTP callbacks; no WebSocket surface.
+  - url: https://www.prodigi.com/print-api/
+    type: Documentation
+    note: Product page describes the REST Print API for orders, quotes, and product data.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Asynchronous updates are delivered
+    via HTTP callbacks (webhooks), modeled in apis.yml as the
+    "Prodigi Webhooks / Callbacks" API rather than as an AsyncAPI document.

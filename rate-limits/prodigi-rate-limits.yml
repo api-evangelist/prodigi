@@ -1,0 +1,51 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Prodigi
+providerId: prodigi
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Print on Demand
+- Printing
+- Dropshipping
+- Fulfillment
+- E-commerce
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Prodigi Print API is authenticated per-account via an X-API-Key header.
+  Prodigi applies request throttling to protect platform stability, and
+  recommends idempotency keys on order creation so throttled or retried
+  requests do not create duplicate orders. Specific published per-endpoint
+  request-per-minute limits are not reconciled in this artifact.
+notes: >-
+  Verify any documented request limits and throttling behaviour in the Prodigi
+  Print API reference on reconciliation. Use the optional idempotencyKey on
+  order creation to make retries safe.
+sources:
+- https://www.prodigi.com/print-api/docs/reference/
+- https://www.prodigi.com/print-api/docs/
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Minute
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Per-API-key request throttling; specific value not reconciled.
+- name: Order Creation
+  scope: account
+  metric: orders
+  limit: see provider documentation
+  notes: Use idempotencyKey to safely retry without duplicate orders.
+policies:
+- name: Idempotency
+  description: Supply an idempotencyKey on order creation so retried requests return the original order rather than creating a duplicate.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on 429 responses and honor Retry-After when present.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

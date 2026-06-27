@@ -1,0 +1,132 @@
+{
+  "info": {
+    "name": "Prodigi Print API",
+    "description": "Prodigi Print API (v4.0) - create and manage print orders, request quotes, and query the product catalogue. Authenticated with an X-API-Key header. Base URL https://api.prodigi.com/v4.0 (sandbox https://api.sandbox.prodigi.com/v4.0).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "X-API-Key", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.prodigi.com/v4.0", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" },
+    { "key": "orderId", "value": "", "type": "string" },
+    { "key": "sku", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingMethod\": \"Standard\",\n  \"idempotencyKey\": \"{{$guid}}\",\n  \"recipient\": {\n    \"name\": \"Jane Doe\",\n    \"address\": {\n      \"line1\": \"1 Example Street\",\n      \"townOrCity\": \"London\",\n      \"postalOrZipCode\": \"SW1A 1AA\",\n      \"countryCode\": \"GB\"\n    }\n  },\n  \"items\": [\n    {\n      \"sku\": \"GLOBAL-FAP-16x24\",\n      \"copies\": 1,\n      \"sizing\": \"fillPrintArea\",\n      \"assets\": [\n        { \"printArea\": \"default\", \"url\": \"https://example.com/image.png\" }\n      ]\n    }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "List Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/orders?top=10&skip=0",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"],
+              "query": [
+                { "key": "top", "value": "10" },
+                { "key": "skip", "value": "0" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Order",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}"] }
+          }
+        },
+        {
+          "name": "Get Order Actions",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}/actions", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "actions"] }
+          }
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}/actions/cancel", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "actions", "cancel"] }
+          }
+        },
+        {
+          "name": "Update Shipping Method",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}/actions/updateShippingMethod", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "actions", "updateShippingMethod"] },
+            "body": { "mode": "raw", "raw": "{\n  \"shippingMethod\": \"Express\"\n}" }
+          }
+        },
+        {
+          "name": "Update Recipient",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}/actions/updateRecipient", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "actions", "updateRecipient"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Jane Doe\",\n  \"address\": {\n    \"line1\": \"2 New Street\",\n    \"townOrCity\": \"London\",\n    \"postalOrZipCode\": \"SW1A 1AA\",\n    \"countryCode\": \"GB\"\n  }\n}" }
+          }
+        },
+        {
+          "name": "Update Metadata",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}/actions/updateMetadata", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "actions", "updateMetadata"] },
+            "body": { "mode": "raw", "raw": "{\n  \"metadata\": {\n    \"campaign\": \"spring-sale\"\n  }\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quotes",
+      "item": [
+        {
+          "name": "Create Quote",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/quotes", "host": ["{{baseUrl}}"], "path": ["quotes"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingMethod\": \"Standard\",\n  \"destinationCountryCode\": \"GB\",\n  \"currencyCode\": \"GBP\",\n  \"items\": [\n    {\n      \"sku\": \"GLOBAL-FAP-16x24\",\n      \"copies\": 1,\n      \"assets\": [{ \"printArea\": \"default\" }]\n    }\n  ]\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get Product Details",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/products/{{sku}}", "host": ["{{baseUrl}}"], "path": ["products", "{{sku}}"] }
+          }
+        }
+      ]
+    }
+  ]
+}

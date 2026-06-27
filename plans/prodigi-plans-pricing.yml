@@ -1,0 +1,87 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Prodigi
+providerId: prodigi
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Print on Demand
+- Printing
+- Dropshipping
+- Fulfillment
+- E-commerce
+- Plans
+description: >-
+  Prodigi charges no fee to use the Print API itself - there is no monthly
+  subscription, setup fee, or minimum order. Merchants pay per order: the
+  wholesale print cost of each product plus shipping, charged direct from the
+  manufacturer. Per-product and shipping prices vary by SKU, attributes,
+  destination country, and shipping method, and are returned in real time by
+  the Quotes endpoint. The Sandbox environment is free to use for testing.
+notes: >-
+  Prodigi does not publish a flat API price list; product and shipping costs
+  are catalogue- and destination-specific. Use the Quotes and Product Details
+  endpoints for current per-item pricing. Per-SKU rates are not reconciled in
+  this artifact.
+sources:
+- https://www.prodigi.com/print-api/
+- https://www.prodigi.com/print-api/docs/reference/
+- https://www.prodigi.com/faq/print-api/
+plans:
+- id: prodigi-pay-per-order
+  name: Pay Per Order
+  type: usage
+  description: >-
+    No API, subscription, or setup fee. Merchants are billed per order for the
+    wholesale print cost of each product plus shipping, with no minimum order.
+  entries:
+  - label: Product Print Cost
+    name: product_print_cost
+    type: usage
+    metric: items
+    limit: -1
+    timeFrame: order
+    geo: global
+    unit: 1
+    price: wholesale per-product cost, varies by SKU and attributes (see Quotes)
+    userMultiplied: false
+  - label: Shipping
+    name: shipping
+    type: usage
+    metric: shipments
+    limit: -1
+    timeFrame: order
+    geo: global
+    unit: 1
+    price: varies by destination country and shipping method (see Quotes)
+    userMultiplied: false
+  elements:
+  - name: Orders
+  - name: Quotes
+  - name: Product Details
+  - name: Webhooks / Callbacks
+- id: prodigi-sandbox
+  name: Sandbox
+  type: free
+  description: >-
+    Free sandbox environment at api.sandbox.prodigi.com for testing order
+    creation, quotes, and callbacks without being charged.
+  entries:
+  - label: Sandbox Access
+    name: sandbox
+    type: flat
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Test Orders
+  - name: Test Quotes
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
