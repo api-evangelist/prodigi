@@ -105,6 +105,10 @@ apis:
     push order, status, and shipment updates as an order moves through Prodigi's
     fulfillment stages.
 common:
+- type: DomainSecurity
+  url: security/prodigi-domain-security.yml
+- type: Authentication
+  url: authentication/prodigi-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/Prodigi-Group
 - type: LinkedIn
@@ -119,6 +123,8 @@ common:
   url: rate-limits/prodigi-rate-limits.yml
 - type: FinOps
   url: finops/prodigi-finops.yml
+- url: https://www.prodigi.com/blog/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
