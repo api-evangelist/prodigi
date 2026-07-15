@@ -105,6 +105,8 @@ apis:
     push order, status, and shipment updates as an order moves through Prodigi's
     fulfillment stages.
 common:
+- type: AgenticAccess
+  url: agentic-access/prodigi-agentic-access.yml
 - type: DomainSecurity
   url: security/prodigi-domain-security.yml
 - type: Authentication
