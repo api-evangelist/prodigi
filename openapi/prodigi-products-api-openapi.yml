@@ -1,0 +1,78 @@
+openapi: 3.0.1
+info:
+  title: Prodigi Print Orders Products API
+  description: The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.
+  termsOfService: https://www.prodigi.com/terms/
+  contact:
+    name: Prodigi Support
+    email: hi@prodigi.com
+    url: https://www.prodigi.com/print-api/docs/
+  version: '4.0'
+servers:
+- url: https://api.prodigi.com/v4.0
+  description: Production
+- url: https://api.sandbox.prodigi.com/v4.0
+  description: Sandbox
+security:
+- ApiKeyAuth: []
+tags:
+- name: Products
+  description: Query the product catalogue by SKU.
+paths:
+  /products/{sku}:
+    get:
+      operationId: getProductDetails
+      tags:
+      - Products
+      summary: Get product details for a SKU.
+      description: Returns all available data for a SKU, including available destinations, attributes, and required assets and dimensions.
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        description: The product SKU.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Product details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDetailsResponse'
+        '404':
+          description: SKU not found.
+components:
+  schemas:
+    ProductDetailsResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        product:
+          type: object
+          properties:
+            sku:
+              type: string
+            description:
+              type: string
+            productDimensions:
+              type: object
+              additionalProperties: true
+            attributes:
+              type: object
+              additionalProperties: true
+            printAreas:
+              type: object
+              additionalProperties: true
+            variants:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Your Prodigi API key, sent in the X-API-Key header on every request.

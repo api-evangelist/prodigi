@@ -1,0 +1,150 @@
+openapi: 3.0.1
+info:
+  title: Prodigi Print Orders Quotes API
+  description: The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.
+  termsOfService: https://www.prodigi.com/terms/
+  contact:
+    name: Prodigi Support
+    email: hi@prodigi.com
+    url: https://www.prodigi.com/print-api/docs/
+  version: '4.0'
+servers:
+- url: https://api.prodigi.com/v4.0
+  description: Production
+- url: https://api.sandbox.prodigi.com/v4.0
+  description: Sandbox
+security:
+- ApiKeyAuth: []
+tags:
+- name: Quotes
+  description: Request pricing and shipping breakdowns before ordering.
+paths:
+  /quotes:
+    post:
+      operationId: createQuote
+      tags:
+      - Quotes
+      summary: Get a quote.
+      description: Returns an array of quotes, each providing a breakdown of pricing, lab allocation, and shipping arrangements for a given set of items, a destination country, and a shipping method.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+      responses:
+        '200':
+          description: Quote results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+        '400':
+          description: Invalid request.
+components:
+  schemas:
+    QuoteRequest:
+      type: object
+      required:
+      - destinationCountryCode
+      - items
+      properties:
+        shippingMethod:
+          $ref: '#/components/schemas/ShippingMethod'
+        destinationCountryCode:
+          type: string
+          description: Two-letter ISO country code for the shipping destination.
+        currencyCode:
+          type: string
+          description: Three-letter ISO currency code for the returned costs.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteItem'
+    ShippingMethod:
+      type: string
+      description: The shipping service level for the order.
+      enum:
+      - Budget
+      - Standard
+      - StandardPlus
+      - Express
+      - Overnight
+    Cost:
+      type: object
+      properties:
+        amount:
+          type: string
+        currency:
+          type: string
+    QuoteItem:
+      type: object
+      required:
+      - sku
+      - copies
+      - assets
+      properties:
+        sku:
+          type: string
+        copies:
+          type: integer
+        attributes:
+          type: object
+          additionalProperties: true
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
+    Quote:
+      type: object
+      properties:
+        shipmentMethod:
+          type: string
+        costSummary:
+          type: object
+          properties:
+            items:
+              $ref: '#/components/schemas/Cost'
+            shipping:
+              $ref: '#/components/schemas/Cost'
+        shipments:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    QuoteResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        quotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Quote'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Your Prodigi API key, sent in the X-API-Key header on every request.
