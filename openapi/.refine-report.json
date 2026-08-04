@@ -1,0 +1,18 @@
+{
+  "provider": "prodigi",
+  "sources": [
+    "prodigi-orders-api-openapi.yml",
+    "prodigi-products-api-openapi.yml",
+    "prodigi-quotes-api-openapi.yml"
+  ],
+  "outputs": [
+    "prodigi-orders-api-openapi.yml",
+    "prodigi-products-api-openapi.yml",
+    "prodigi-quotes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
