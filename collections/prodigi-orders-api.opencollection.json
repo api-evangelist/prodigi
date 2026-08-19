@@ -1,0 +1,216 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prodigi Print Orders API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List orders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/orders",
+            "params": [
+              {
+                "name": "top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of orders to return."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of orders to skip for paging."
+              },
+              {
+                "name": "createdFrom",
+                "value": "",
+                "type": "query",
+                "description": "Return orders created on or after this UTC timestamp."
+              },
+              {
+                "name": "createdTo",
+                "value": "",
+                "type": "query",
+                "description": "Return orders created on or before this UTC timestamp."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order stage."
+              },
+              {
+                "name": "merchantReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the merchant's own reference."
+              }
+            ]
+          },
+          "docs": "Returns a paged list of orders for the given filtering options."
+        },
+        {
+          "info": {
+            "name": "Create a new print order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a new order for fulfillment. Supply a recipient, one or more items with their SKUs and print assets, and a shipping method. An optional idempotencyKey makes the request safely retryable."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The Prodigi order id (prefixed with \"ord_\")."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific order."
+        },
+        {
+          "info": {
+            "name": "Get available actions for an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/orders/:orderId/actions",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The Prodigi order id (prefixed with \"ord_\")."
+              }
+            ]
+          },
+          "docs": "Returns which actions (cancel, updateShippingMethod, updateRecipient, updateMetadata) are currently available for the order given its fulfillment stage."
+        },
+        {
+          "info": {
+            "name": "Cancel an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/:orderId/actions/cancel",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The Prodigi order id (prefixed with \"ord_\")."
+              }
+            ]
+          },
+          "docs": "Requests cancellation of an order. Only available while the order has not progressed past the point of cancellation."
+        },
+        {
+          "info": {
+            "name": "Update the shipping method of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/:orderId/actions/updateShippingMethod",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The Prodigi order id (prefixed with \"ord_\")."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the shipping method of an order."
+        },
+        {
+          "info": {
+            "name": "Update the recipient of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/:orderId/actions/updateRecipient",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The Prodigi order id (prefixed with \"ord_\")."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the recipient of an order."
+        },
+        {
+          "info": {
+            "name": "Update the metadata of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/orders/:orderId/actions/updateMetadata",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The Prodigi order id (prefixed with \"ord_\")."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the metadata of an order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

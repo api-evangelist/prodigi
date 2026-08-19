@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prodigi Print Orders Products API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get product details for a SKU.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prodigi.com/v4.0/products/:sku",
+            "params": [
+              {
+                "name": "sku",
+                "value": "",
+                "type": "path",
+                "description": "The product SKU."
+              }
+            ]
+          },
+          "docs": "Returns all available data for a SKU, including available destinations, attributes, and required assets and dimensions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

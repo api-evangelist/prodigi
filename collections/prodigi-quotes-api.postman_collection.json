@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "48cb67ef-d78a-4327-b0db-3c199faf85e6",
+      "name": "Quotes",
+      "description": {
+        "content": "Request pricing and shipping breakdowns before ordering.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40ccd6a3-2800-415c-b1e8-e265518ead5a",
+          "name": "Get a quote.",
+          "request": {
+            "name": "Get a quote.",
+            "description": {
+              "content": "Returns an array of quotes, each providing a breakdown of pricing, lab allocation, and shipping arrangements for a given set of items, a destination country, and a shipping method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationCountryCode\": \"<string>\",\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 1647.4257247590795\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9802,\n        \"key_2\": 8447,\n        \"key_3\": \"string\"\n      }\n    }\n  ],\n  \"shippingMethod\": \"<string>\",\n  \"currencyCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8116c432-1aca-44b5-99b7-f8841cb1afa1",
+              "name": "Quote results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCountryCode\": \"<string>\",\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"attributes\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": \"string\"\n      }\n    }\n  ],\n  \"shippingMethod\": \"<string>\",\n  \"currencyCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"quotes\": [\n    {\n      \"shipmentMethod\": \"string\",\n      \"costSummary\": {\n        \"items\": {\n          \"amount\": \"string\",\n          \"currency\": \"string\"\n        },\n        \"shipping\": {\n          \"amount\": \"string\",\n          \"currency\": \"string\"\n        }\n      },\n      \"shipments\": [\n        {\n          \"key_0\": 8131.44208945778\n        },\n        {\n          \"key_0\": false\n        }\n      ],\n      \"items\": [\n        {\n          \"key_0\": 6510,\n          \"key_1\": \"string\",\n          \"key_2\": 2955\n        },\n        {\n          \"key_0\": \"string\"\n        }\n      ]\n    },\n    {\n      \"shipmentMethod\": \"string\",\n      \"costSummary\": {\n        \"items\": {\n          \"amount\": \"string\",\n          \"currency\": \"string\"\n        },\n        \"shipping\": {\n          \"amount\": \"string\",\n          \"currency\": \"string\"\n        }\n      },\n      \"shipments\": [\n        {\n          \"key_0\": true,\n          \"key_1\": 3491\n        },\n        {\n          \"key_0\": 8088,\n          \"key_1\": \"string\",\n          \"key_2\": false,\n          \"key_3\": 9491.394388868972\n        }\n      ],\n      \"items\": [\n        {\n          \"key_0\": false\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": 3042\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39014882-fa0c-4483-b578-e8c197550ceb",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCountryCode\": \"<string>\",\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"attributes\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": \"string\"\n      }\n    }\n  ],\n  \"shippingMethod\": \"<string>\",\n  \"currencyCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prodigi.com/v4.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f275159f-549d-4abc-8ee8-4e5cada605f8",
+    "name": "Prodigi Print Orders Quotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.\n\nContact Support:\n Name: Prodigi Support\n Email: hi@prodigi.com",
+      "type": "text/plain"
+    }
+  }
+}

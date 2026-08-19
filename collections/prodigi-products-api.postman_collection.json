@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "424eb744-1cc4-4a06-bb30-a31cb0988242",
+      "name": "Products",
+      "description": {
+        "content": "Query the product catalogue by SKU.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ea350a0-d8c1-4e64-b280-08854a0144b6",
+          "name": "Get product details for a SKU.",
+          "request": {
+            "name": "Get product details for a SKU.",
+            "description": {
+              "content": "Returns all available data for a SKU, including available destinations, attributes, and required assets and dimensions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":sku"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sku",
+                  "description": "(Required) The product SKU."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1f995d5-fd2a-4520-83ca-6b60a30f68e3",
+              "name": "Product details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":sku"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sku",
+                      "description": "(Required) The product SKU."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"product\": {\n    \"sku\": \"string\",\n    \"description\": \"string\",\n    \"productDimensions\": {\n      \"key_0\": 3726,\n      \"key_1\": \"string\"\n    },\n    \"attributes\": {\n      \"key_0\": 8270,\n      \"key_1\": 248\n    },\n    \"printAreas\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"variants\": [\n      {\n        \"key_0\": 4845.524662469605\n      },\n      {\n        \"key_0\": 1883,\n        \"key_1\": 2459\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0e11e78-79fa-47fc-99fd-176773bf6b70",
+              "name": "SKU not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":sku"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sku",
+                      "description": "(Required) The product SKU."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prodigi.com/v4.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bba3f754-c189-43b4-b890-8fe49736ab31",
+    "name": "Prodigi Print Orders Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.\n\nContact Support:\n Name: Prodigi Support\n Email: hi@prodigi.com",
+      "type": "text/plain"
+    }
+  }
+}

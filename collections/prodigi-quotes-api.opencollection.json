@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prodigi Print Orders Quotes API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a quote.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prodigi.com/v4.0/quotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns an array of quotes, each providing a breakdown of pricing, lab allocation, and shipping arrangements for a given set of items, a destination country, and a shipping method."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1139 @@
+{
+  "item": [
+    {
+      "id": "6614fffa-1751-485d-baff-798f6f3e13d7",
+      "name": "Orders",
+      "description": {
+        "content": "Create, retrieve, list, and act on print orders.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f89f058f-6a8f-40be-8236-dede867b8884",
+          "name": "Create a new print order.",
+          "request": {
+            "name": "Create a new print order.",
+            "description": {
+              "content": "Submits a new order for fulfillment. Supply a recipient, one or more items with their SKUs and print assets, and a shipping method. An optional idempotencyKey makes the request safely retryable.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingMethod\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"address\": {\n      \"line1\": \"<string>\",\n      \"townOrCity\": \"<string>\",\n      \"postalOrZipCode\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"stateOrCounty\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": true\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": true,\n        \"key_1\": 9939.462667536116,\n        \"key_2\": true,\n        \"key_3\": 4867.369617655236,\n        \"key_4\": false\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"merchantReference\": \"<string>\",\n  \"idempotencyKey\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"branding\": {\n    \"key_0\": 8833.021503774968\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73a750f4-9b7d-4452-a9f6-df46a79a5bd8",
+              "name": "Order created (or returned via idempotency).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethod\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"address\": {\n      \"line1\": \"<string>\",\n      \"townOrCity\": \"<string>\",\n      \"postalOrZipCode\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"stateOrCounty\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": 4052.8031106808994,\n        \"key_1\": 4318.010547210131\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": false\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"merchantReference\": \"<string>\",\n  \"idempotencyKey\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4323\n  },\n  \"branding\": {\n    \"key_0\": 5638\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"order\": {\n    \"id\": \"string\",\n    \"created\": \"1949-08-23T23:38:15.096Z\",\n    \"lastUpdated\": \"2014-08-22T22:03:46.735Z\",\n    \"callbackUrl\": \"string\",\n    \"merchantReference\": \"string\",\n    \"shippingMethod\": \"<string>\",\n    \"idempotencyKey\": \"string\",\n    \"status\": {\n      \"stage\": \"Cancelled\",\n      \"issues\": [\n        {\n          \"key_0\": 8494,\n          \"key_1\": 4943.505408289214\n        },\n        {\n          \"key_0\": 475,\n          \"key_1\": 4921.9150860178825\n        }\n      ],\n      \"details\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6307\n      }\n    },\n    \"charges\": [\n      {\n        \"key_0\": true,\n        \"key_1\": 7876\n      },\n      {\n        \"key_0\": true,\n        \"key_1\": 6607,\n        \"key_2\": \"string\",\n        \"key_3\": 3885.348482471609\n      }\n    ],\n    \"shipments\": [\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": true,\n          \"key_1\": 4004\n        },\n        \"dispatchDate\": \"1956-12-28T02:28:17.389Z\",\n        \"tracking\": {\n          \"key_0\": true,\n          \"key_1\": false\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 9306,\n          \"key_1\": false\n        },\n        \"items\": [\n          {\n            \"key_0\": 7658,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": true,\n            \"key_1\": 8077.866772552072,\n            \"key_2\": 4734\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": 5932,\n          \"key_1\": 4458.695670849312\n        },\n        \"dispatchDate\": \"2001-11-25T01:13:55.361Z\",\n        \"tracking\": {\n          \"key_0\": 1783.6745540112531\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 945\n        },\n        \"items\": [\n          {\n            \"key_0\": 4607\n          },\n          {\n            \"key_0\": 531.8971493284075,\n            \"key_1\": 7533.183245606509\n          }\n        ]\n      }\n    ],\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"townOrCity\": \"<string>\",\n        \"postalOrZipCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"stateOrCounty\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"items\": [\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": 3273.142125755856\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": 8147\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": 914.6687456022728,\n      \"key_1\": \"string\"\n    },\n    \"branding\": {\n      \"key_0\": 2680,\n      \"key_1\": 3866.546662493188\n    },\n    \"packingSlip\": {\n      \"key_0\": true,\n      \"key_1\": false,\n      \"key_2\": 9237.27136493062,\n      \"key_3\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c86916f-fadc-4bc9-99cb-1711c90087b4",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethod\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"address\": {\n      \"line1\": \"<string>\",\n      \"townOrCity\": \"<string>\",\n      \"postalOrZipCode\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"stateOrCounty\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": 4052.8031106808994,\n        \"key_1\": 4318.010547210131\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": false\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"merchantReference\": \"<string>\",\n  \"idempotencyKey\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4323\n  },\n  \"branding\": {\n    \"key_0\": 5638\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10841230-5462-488c-b98d-13c43704cb5d",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethod\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"address\": {\n      \"line1\": \"<string>\",\n      \"townOrCity\": \"<string>\",\n      \"postalOrZipCode\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"stateOrCounty\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": 4052.8031106808994,\n        \"key_1\": 4318.010547210131\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"copies\": \"<integer>\",\n      \"sizing\": \"<string>\",\n      \"assets\": [\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        },\n        {\n          \"printArea\": \"<string>\",\n          \"url\": \"<string>\",\n          \"md5Hash\": \"<string>\",\n          \"pageCount\": \"<integer>\"\n        }\n      ],\n      \"merchantReference\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": false\n      },\n      \"recipientCost\": {\n        \"amount\": \"<string>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"merchantReference\": \"<string>\",\n  \"idempotencyKey\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4323\n  },\n  \"branding\": {\n    \"key_0\": 5638\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a943efaf-43f2-4ca8-91fb-dba920e52391",
+          "name": "List orders.",
+          "request": {
+            "name": "List orders.",
+            "description": {
+              "content": "Returns a paged list of orders for the given filtering options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "<integer>",
+                  "description": "Maximum number of orders to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<integer>",
+                  "description": "Number of orders to skip for paging."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdFrom",
+                  "value": "<dateTime>",
+                  "description": "Return orders created on or after this UTC timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdTo",
+                  "value": "<dateTime>",
+                  "description": "Return orders created on or before this UTC timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by order stage."
+                },
+                {
+                  "disabled": false,
+                  "key": "merchantReference",
+                  "value": "<string>",
+                  "description": "Filter by the merchant's own reference."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8663468e-e632-44f7-82ce-986016218870",
+              "name": "A list of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "createdFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantReference",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"orders\": [\n    {\n      \"id\": \"string\",\n      \"created\": \"1997-05-10T13:05:39.367Z\",\n      \"lastUpdated\": \"1998-08-20T21:36:40.621Z\",\n      \"callbackUrl\": \"string\",\n      \"merchantReference\": \"string\",\n      \"shippingMethod\": \"<string>\",\n      \"idempotencyKey\": \"string\",\n      \"status\": {\n        \"stage\": \"Cancelled\",\n        \"issues\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": \"string\"\n          }\n        ],\n        \"details\": {\n          \"key_0\": 7805\n        }\n      },\n      \"charges\": [\n        {\n          \"key_0\": 4621.8942864918245\n        },\n        {\n          \"key_0\": false\n        }\n      ],\n      \"shipments\": [\n        {\n          \"id\": \"string\",\n          \"status\": \"string\",\n          \"carrier\": {\n            \"key_0\": true,\n            \"key_1\": 2613\n          },\n          \"dispatchDate\": \"2014-03-25T21:54:33.525Z\",\n          \"tracking\": {\n            \"key_0\": 7287,\n            \"key_1\": \"string\"\n          },\n          \"fulfillmentLocation\": {\n            \"key_0\": 8739.3671338527\n          },\n          \"items\": [\n            {\n              \"key_0\": 6,\n              \"key_1\": 2230.85580789812\n            },\n            {\n              \"key_0\": true\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"status\": \"string\",\n          \"carrier\": {\n            \"key_0\": 7223.553111205998\n          },\n          \"dispatchDate\": \"2005-12-23T15:32:46.282Z\",\n          \"tracking\": {\n            \"key_0\": false\n          },\n          \"fulfillmentLocation\": {\n            \"key_0\": 7304,\n            \"key_1\": \"string\"\n          },\n          \"items\": [\n            {\n              \"key_0\": \"string\",\n              \"key_1\": 9971.008617586282,\n              \"key_2\": 9903.12965019564,\n              \"key_3\": 2382\n            },\n            {\n              \"key_0\": 121,\n              \"key_1\": 2005.3836039369332,\n              \"key_2\": false\n            }\n          ]\n        }\n      ],\n      \"recipient\": {\n        \"name\": \"<string>\",\n        \"address\": {\n          \"line1\": \"<string>\",\n          \"townOrCity\": \"<string>\",\n          \"postalOrZipCode\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"stateOrCounty\": \"<string>\"\n        },\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\"\n      },\n      \"items\": [\n        {\n          \"sku\": \"<string>\",\n          \"copies\": \"<integer>\",\n          \"sizing\": \"<string>\",\n          \"assets\": [\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"merchantReference\": \"<string>\",\n          \"attributes\": {\n            \"key_0\": 4322.2188753775745,\n            \"key_1\": \"string\"\n          },\n          \"recipientCost\": {\n            \"amount\": \"<string>\",\n            \"currency\": \"<string>\"\n          }\n        },\n        {\n          \"sku\": \"<string>\",\n          \"copies\": \"<integer>\",\n          \"sizing\": \"<string>\",\n          \"assets\": [\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"merchantReference\": \"<string>\",\n          \"attributes\": {\n            \"key_0\": 1647.7324696612561,\n            \"key_1\": \"string\"\n          },\n          \"recipientCost\": {\n            \"amount\": \"<string>\",\n            \"currency\": \"<string>\"\n          }\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": 2803,\n        \"key_1\": false\n      },\n      \"branding\": {\n        \"key_0\": \"string\"\n      },\n      \"packingSlip\": {\n        \"key_0\": 1239,\n        \"key_1\": 3144.027657836087\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"created\": \"1955-11-18T14:10:26.274Z\",\n      \"lastUpdated\": \"1952-12-13T01:13:17.117Z\",\n      \"callbackUrl\": \"string\",\n      \"merchantReference\": \"string\",\n      \"shippingMethod\": \"<string>\",\n      \"idempotencyKey\": \"string\",\n      \"status\": {\n        \"stage\": \"Complete\",\n        \"issues\": [\n          {\n            \"key_0\": \"string\",\n            \"key_1\": 2073,\n            \"key_2\": 5046.519624760966,\n            \"key_3\": 2072.8924665030045\n          },\n          {\n            \"key_0\": \"string\",\n            \"key_1\": 9251.256434637457\n          }\n        ],\n        \"details\": {\n          \"key_0\": 9492.916387076682\n        }\n      },\n      \"charges\": [\n        {\n          \"key_0\": 4527.675363190338\n        },\n        {\n          \"key_0\": 2949.5967728866735,\n          \"key_1\": 9013,\n          \"key_2\": 5035.35801055322,\n          \"key_3\": 1120\n        }\n      ],\n      \"shipments\": [\n        {\n          \"id\": \"string\",\n          \"status\": \"string\",\n          \"carrier\": {\n            \"key_0\": \"string\",\n            \"key_1\": 6626.115195601154\n          },\n          \"dispatchDate\": \"2025-03-23T22:35:29.812Z\",\n          \"tracking\": {\n            \"key_0\": 6141.612343399266,\n            \"key_1\": \"string\"\n          },\n          \"fulfillmentLocation\": {\n            \"key_0\": 5538\n          },\n          \"items\": [\n            {\n              \"key_0\": 1630.9123468305108\n            },\n            {\n              \"key_0\": true,\n              \"key_1\": \"string\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"status\": \"string\",\n          \"carrier\": {\n            \"key_0\": 2775.1484941101203,\n            \"key_1\": true,\n            \"key_2\": 953.6120993177876\n          },\n          \"dispatchDate\": \"2007-07-17T14:38:28.243Z\",\n          \"tracking\": {\n            \"key_0\": \"string\",\n            \"key_1\": 3092\n          },\n          \"fulfillmentLocation\": {\n            \"key_0\": 4948\n          },\n          \"items\": [\n            {\n              \"key_0\": false\n            },\n            {\n              \"key_0\": \"string\",\n              \"key_1\": 4213\n            }\n          ]\n        }\n      ],\n      \"recipient\": {\n        \"name\": \"<string>\",\n        \"address\": {\n          \"line1\": \"<string>\",\n          \"townOrCity\": \"<string>\",\n          \"postalOrZipCode\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"stateOrCounty\": \"<string>\"\n        },\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\"\n      },\n      \"items\": [\n        {\n          \"sku\": \"<string>\",\n          \"copies\": \"<integer>\",\n          \"sizing\": \"<string>\",\n          \"assets\": [\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"merchantReference\": \"<string>\",\n          \"attributes\": {\n            \"key_0\": 4796\n          },\n          \"recipientCost\": {\n            \"amount\": \"<string>\",\n            \"currency\": \"<string>\"\n          }\n        },\n        {\n          \"sku\": \"<string>\",\n          \"copies\": \"<integer>\",\n          \"sizing\": \"<string>\",\n          \"assets\": [\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"printArea\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"md5Hash\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pageCount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"merchantReference\": \"<string>\",\n          \"attributes\": {\n            \"key_0\": 6388.017492760661\n          },\n          \"recipientCost\": {\n            \"amount\": \"<string>\",\n            \"currency\": \"<string>\"\n          }\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": 8719.65990499286\n      },\n      \"branding\": {\n        \"key_0\": false,\n        \"key_1\": 6660\n      },\n      \"packingSlip\": {\n        \"key_0\": 9277.251865578002\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb280a65-6a08-4904-876e-c6d5f9c3f800",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "createdFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantReference",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "750eae7e-66b2-489d-a4fe-8eb7e95fe2fb",
+          "name": "Retrieve a specific order.",
+          "request": {
+            "name": "Retrieve a specific order.",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18941a81-dd17-4e0f-b695-fdc4326ead7c",
+              "name": "The requested order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"order\": {\n    \"id\": \"string\",\n    \"created\": \"1979-11-24T07:52:33.718Z\",\n    \"lastUpdated\": \"1957-10-18T09:25:05.150Z\",\n    \"callbackUrl\": \"string\",\n    \"merchantReference\": \"string\",\n    \"shippingMethod\": \"<string>\",\n    \"idempotencyKey\": \"string\",\n    \"status\": {\n      \"stage\": \"Cancelled\",\n      \"issues\": [\n        {\n          \"key_0\": false,\n          \"key_1\": true,\n          \"key_2\": true\n        },\n        {\n          \"key_0\": 4729\n        }\n      ],\n      \"details\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": 5925\n      }\n    },\n    \"charges\": [\n      {\n        \"key_0\": true\n      },\n      {\n        \"key_0\": 6520\n      }\n    ],\n    \"shipments\": [\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": 7902.8644664476315,\n          \"key_1\": 7499\n        },\n        \"dispatchDate\": \"1981-11-11T01:07:41.116Z\",\n        \"tracking\": {\n          \"key_0\": true,\n          \"key_1\": 6774\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 2699.670574926768,\n          \"key_1\": 9322\n        },\n        \"items\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": 5758.819687433988,\n            \"key_1\": \"string\",\n            \"key_2\": 7253.855150996791\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": true,\n          \"key_1\": true\n        },\n        \"dispatchDate\": \"1969-08-05T02:41:52.045Z\",\n        \"tracking\": {\n          \"key_0\": \"string\"\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": true,\n          \"key_1\": 7741.408542979308\n        },\n        \"items\": [\n          {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": 8782.163886078557\n          }\n        ]\n      }\n    ],\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"townOrCity\": \"<string>\",\n        \"postalOrZipCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"stateOrCounty\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"items\": [\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"branding\": {\n      \"key_0\": 3380.4744370081994,\n      \"key_1\": 7219\n    },\n    \"packingSlip\": {\n      \"key_0\": 6277,\n      \"key_1\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a284a113-ed85-4859-a754-4db977130c20",
+              "name": "Order not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c54b14be-a430-46de-96ef-01661ef45da5",
+          "name": "Get available actions for an order.",
+          "request": {
+            "name": "Get available actions for an order.",
+            "description": {
+              "content": "Returns which actions (cancel, updateShippingMethod, updateRecipient, updateMetadata) are currently available for the order given its fulfillment stage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9566361-d83b-42ef-b729-a5358418d08e",
+              "name": "Available actions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"cancel\": \"string\",\n  \"changeRecipientDetails\": \"string\",\n  \"changeShippingMethod\": \"string\",\n  \"changeMetadata\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb92b8b5-aa54-47c8-bfc3-16ff29ef35ff",
+          "name": "Cancel an order.",
+          "request": {
+            "name": "Cancel an order.",
+            "description": {
+              "content": "Requests cancellation of an order. Only available while the order has not progressed past the point of cancellation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "actions",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74674efa-9594-4c3f-9e1d-6af737dd9b61",
+              "name": "Cancellation outcome.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "actions",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"order\": {\n    \"id\": \"string\",\n    \"created\": \"1979-11-24T07:52:33.718Z\",\n    \"lastUpdated\": \"1957-10-18T09:25:05.150Z\",\n    \"callbackUrl\": \"string\",\n    \"merchantReference\": \"string\",\n    \"shippingMethod\": \"<string>\",\n    \"idempotencyKey\": \"string\",\n    \"status\": {\n      \"stage\": \"Cancelled\",\n      \"issues\": [\n        {\n          \"key_0\": false,\n          \"key_1\": true,\n          \"key_2\": true\n        },\n        {\n          \"key_0\": 4729\n        }\n      ],\n      \"details\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": 5925\n      }\n    },\n    \"charges\": [\n      {\n        \"key_0\": true\n      },\n      {\n        \"key_0\": 6520\n      }\n    ],\n    \"shipments\": [\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": 7902.8644664476315,\n          \"key_1\": 7499\n        },\n        \"dispatchDate\": \"1981-11-11T01:07:41.116Z\",\n        \"tracking\": {\n          \"key_0\": true,\n          \"key_1\": 6774\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 2699.670574926768,\n          \"key_1\": 9322\n        },\n        \"items\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": 5758.819687433988,\n            \"key_1\": \"string\",\n            \"key_2\": 7253.855150996791\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": true,\n          \"key_1\": true\n        },\n        \"dispatchDate\": \"1969-08-05T02:41:52.045Z\",\n        \"tracking\": {\n          \"key_0\": \"string\"\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": true,\n          \"key_1\": 7741.408542979308\n        },\n        \"items\": [\n          {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": 8782.163886078557\n          }\n        ]\n      }\n    ],\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"townOrCity\": \"<string>\",\n        \"postalOrZipCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"stateOrCounty\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"items\": [\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"branding\": {\n      \"key_0\": 3380.4744370081994,\n      \"key_1\": 7219\n    },\n    \"packingSlip\": {\n      \"key_0\": 6277,\n      \"key_1\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69d6e50e-a9c7-4b21-b1a2-545a7e858d30",
+          "name": "Update the shipping method of an order.",
+          "request": {
+            "name": "Update the shipping method of an order.",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "actions",
+                "updateShippingMethod"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingMethod\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9ead3be-04df-469b-8c29-c4109a011f79",
+              "name": "Update outcome.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "actions",
+                    "updateShippingMethod"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingMethod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"order\": {\n    \"id\": \"string\",\n    \"created\": \"1979-11-24T07:52:33.718Z\",\n    \"lastUpdated\": \"1957-10-18T09:25:05.150Z\",\n    \"callbackUrl\": \"string\",\n    \"merchantReference\": \"string\",\n    \"shippingMethod\": \"<string>\",\n    \"idempotencyKey\": \"string\",\n    \"status\": {\n      \"stage\": \"Cancelled\",\n      \"issues\": [\n        {\n          \"key_0\": false,\n          \"key_1\": true,\n          \"key_2\": true\n        },\n        {\n          \"key_0\": 4729\n        }\n      ],\n      \"details\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": 5925\n      }\n    },\n    \"charges\": [\n      {\n        \"key_0\": true\n      },\n      {\n        \"key_0\": 6520\n      }\n    ],\n    \"shipments\": [\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": 7902.8644664476315,\n          \"key_1\": 7499\n        },\n        \"dispatchDate\": \"1981-11-11T01:07:41.116Z\",\n        \"tracking\": {\n          \"key_0\": true,\n          \"key_1\": 6774\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 2699.670574926768,\n          \"key_1\": 9322\n        },\n        \"items\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": 5758.819687433988,\n            \"key_1\": \"string\",\n            \"key_2\": 7253.855150996791\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": true,\n          \"key_1\": true\n        },\n        \"dispatchDate\": \"1969-08-05T02:41:52.045Z\",\n        \"tracking\": {\n          \"key_0\": \"string\"\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": true,\n          \"key_1\": 7741.408542979308\n        },\n        \"items\": [\n          {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": 8782.163886078557\n          }\n        ]\n      }\n    ],\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"townOrCity\": \"<string>\",\n        \"postalOrZipCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"stateOrCounty\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"items\": [\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"branding\": {\n      \"key_0\": 3380.4744370081994,\n      \"key_1\": 7219\n    },\n    \"packingSlip\": {\n      \"key_0\": 6277,\n      \"key_1\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb6bf586-152c-492c-a536-647ab8d5297c",
+          "name": "Update the recipient of an order.",
+          "request": {
+            "name": "Update the recipient of an order.",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "actions",
+                "updateRecipient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"townOrCity\": \"<string>\",\n    \"postalOrZipCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"stateOrCounty\": \"<string>\"\n  },\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "94130ece-16ec-43a7-9db7-a23f5917d053",
+              "name": "Update outcome.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "actions",
+                    "updateRecipient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"townOrCity\": \"<string>\",\n    \"postalOrZipCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"stateOrCounty\": \"<string>\"\n  },\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"order\": {\n    \"id\": \"string\",\n    \"created\": \"1979-11-24T07:52:33.718Z\",\n    \"lastUpdated\": \"1957-10-18T09:25:05.150Z\",\n    \"callbackUrl\": \"string\",\n    \"merchantReference\": \"string\",\n    \"shippingMethod\": \"<string>\",\n    \"idempotencyKey\": \"string\",\n    \"status\": {\n      \"stage\": \"Cancelled\",\n      \"issues\": [\n        {\n          \"key_0\": false,\n          \"key_1\": true,\n          \"key_2\": true\n        },\n        {\n          \"key_0\": 4729\n        }\n      ],\n      \"details\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": 5925\n      }\n    },\n    \"charges\": [\n      {\n        \"key_0\": true\n      },\n      {\n        \"key_0\": 6520\n      }\n    ],\n    \"shipments\": [\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": 7902.8644664476315,\n          \"key_1\": 7499\n        },\n        \"dispatchDate\": \"1981-11-11T01:07:41.116Z\",\n        \"tracking\": {\n          \"key_0\": true,\n          \"key_1\": 6774\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 2699.670574926768,\n          \"key_1\": 9322\n        },\n        \"items\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": 5758.819687433988,\n            \"key_1\": \"string\",\n            \"key_2\": 7253.855150996791\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": true,\n          \"key_1\": true\n        },\n        \"dispatchDate\": \"1969-08-05T02:41:52.045Z\",\n        \"tracking\": {\n          \"key_0\": \"string\"\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": true,\n          \"key_1\": 7741.408542979308\n        },\n        \"items\": [\n          {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": 8782.163886078557\n          }\n        ]\n      }\n    ],\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"townOrCity\": \"<string>\",\n        \"postalOrZipCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"stateOrCounty\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"items\": [\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"branding\": {\n      \"key_0\": 3380.4744370081994,\n      \"key_1\": 7219\n    },\n    \"packingSlip\": {\n      \"key_0\": 6277,\n      \"key_1\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42e72121-7bf0-419b-b787-b8b6a65d1fbb",
+          "name": "Update the metadata of an order.",
+          "request": {
+            "name": "Update the metadata of an order.",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "actions",
+                "updateMetadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata\": {\n    \"key_0\": 5967\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78d6d886-328f-4303-93f1-e2629ee0afda",
+              "name": "Update outcome.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "actions",
+                    "updateMetadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The Prodigi order id (prefixed with \"ord_\")."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outcome\": \"string\",\n  \"order\": {\n    \"id\": \"string\",\n    \"created\": \"1979-11-24T07:52:33.718Z\",\n    \"lastUpdated\": \"1957-10-18T09:25:05.150Z\",\n    \"callbackUrl\": \"string\",\n    \"merchantReference\": \"string\",\n    \"shippingMethod\": \"<string>\",\n    \"idempotencyKey\": \"string\",\n    \"status\": {\n      \"stage\": \"Cancelled\",\n      \"issues\": [\n        {\n          \"key_0\": false,\n          \"key_1\": true,\n          \"key_2\": true\n        },\n        {\n          \"key_0\": 4729\n        }\n      ],\n      \"details\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": 5925\n      }\n    },\n    \"charges\": [\n      {\n        \"key_0\": true\n      },\n      {\n        \"key_0\": 6520\n      }\n    ],\n    \"shipments\": [\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": 7902.8644664476315,\n          \"key_1\": 7499\n        },\n        \"dispatchDate\": \"1981-11-11T01:07:41.116Z\",\n        \"tracking\": {\n          \"key_0\": true,\n          \"key_1\": 6774\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": 2699.670574926768,\n          \"key_1\": 9322\n        },\n        \"items\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": 5758.819687433988,\n            \"key_1\": \"string\",\n            \"key_2\": 7253.855150996791\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"carrier\": {\n          \"key_0\": true,\n          \"key_1\": true\n        },\n        \"dispatchDate\": \"1969-08-05T02:41:52.045Z\",\n        \"tracking\": {\n          \"key_0\": \"string\"\n        },\n        \"fulfillmentLocation\": {\n          \"key_0\": true,\n          \"key_1\": 7741.408542979308\n        },\n        \"items\": [\n          {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": 8782.163886078557\n          }\n        ]\n      }\n    ],\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"townOrCity\": \"<string>\",\n        \"postalOrZipCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"stateOrCounty\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"items\": [\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      {\n        \"sku\": \"<string>\",\n        \"copies\": \"<integer>\",\n        \"sizing\": \"<string>\",\n        \"assets\": [\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          },\n          {\n            \"printArea\": \"<string>\",\n            \"url\": \"<string>\",\n            \"md5Hash\": \"<string>\",\n            \"pageCount\": \"<integer>\"\n          }\n        ],\n        \"merchantReference\": \"<string>\",\n        \"attributes\": {\n          \"key_0\": true\n        },\n        \"recipientCost\": {\n          \"amount\": \"<string>\",\n          \"currency\": \"<string>\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"branding\": {\n      \"key_0\": 3380.4744370081994,\n      \"key_1\": 7219\n    },\n    \"packingSlip\": {\n      \"key_0\": 6277,\n      \"key_1\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prodigi.com/v4.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d1e2d2f-316a-4aa1-993d-efcec630b7fa",
+    "name": "Prodigi Print Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.\n\nContact Support:\n Name: Prodigi Support\n Email: hi@prodigi.com",
+      "type": "text/plain"
+    }
+  }
+}
