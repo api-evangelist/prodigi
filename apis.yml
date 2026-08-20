@@ -26,6 +26,12 @@ tags:
 - Printing
 - Dropshipping
 - Fulfillment
+- E-Commerce
+tags_raw:
+- Print on Demand
+- Printing
+- Dropshipping
+- Fulfillment
 - E-commerce
 created: '2026-06-25'
 modified: '2026-06-25'
@@ -37,6 +43,8 @@ apis:
   humanURL: https://www.prodigi.com/print-api/docs/reference/
   baseURL: https://api.prodigi.com/v4.0
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -55,6 +63,8 @@ apis:
   humanURL: https://www.prodigi.com/print-api/docs/reference/
   baseURL: https://api.prodigi.com/v4.0
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
