@@ -108,6 +108,9 @@ apis:
   - type: OpenCollection
     url: collections/prodigi.opencollection.json
 common:
+- type: CapabilityMap
+  url: capabilities/prodigi-capability-edges.yml
+  name: Prodigi Business Capability Map
 - type: AgenticAccess
   url: agentic-access/prodigi-agentic-access.yml
 - type: DomainSecurity

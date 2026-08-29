@@ -1,0 +1,27 @@
+slug: prodigi
+provider: Prodigi
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Orders
+  spec_file: prodigi-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.75
+  evidence: POST /orders createOrder 'Create a new print order.'; POST /orders/{orderId}/actions/updateShippingMethod;
+    schemas Recipient, Shipment, OrderStatus
+  reason: Operations create, list, cancel and amend fulfilment orders (recipient, shipping method) that
+    progress through print-on-demand fulfilment stages — i.e. order capture and fulfilment orchestration
+    on behalf of merchants. Order Fulfilment Management is the closest honest fit; some ambiguity versus
+    a pure sales-order reading.
