@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Prodigi Print Orders API
   description: The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.
@@ -24,7 +24,7 @@ paths:
       operationId: createOrder
       tags:
       - Orders
-      summary: Create a new print order.
+      summary: Create a new print order
       description: Submits a new order for fulfillment. Supply a recipient, one or more items with their SKUs and print assets, and a shipping method. An optional idempotencyKey makes the request safely retryable.
       requestBody:
         required: true
@@ -47,7 +47,7 @@ paths:
       operationId: listOrders
       tags:
       - Orders
-      summary: List orders.
+      summary: List orders
       description: Returns a paged list of orders for the given filtering options.
       parameters:
       - name: top
@@ -100,7 +100,7 @@ paths:
       operationId: getOrder
       tags:
       - Orders
-      summary: Retrieve a specific order.
+      summary: Retrieve a specific order
       parameters:
       - $ref: '#/components/parameters/OrderId'
       responses:
@@ -117,7 +117,7 @@ paths:
       operationId: getOrderActions
       tags:
       - Orders
-      summary: Get available actions for an order.
+      summary: Get available actions for an order
       description: Returns which actions (cancel, updateShippingMethod, updateRecipient, updateMetadata) are currently available for the order given its fulfillment stage.
       parameters:
       - $ref: '#/components/parameters/OrderId'
@@ -133,7 +133,7 @@ paths:
       operationId: cancelOrder
       tags:
       - Orders
-      summary: Cancel an order.
+      summary: Cancel an order
       description: Requests cancellation of an order. Only available while the order has not progressed past the point of cancellation.
       parameters:
       - $ref: '#/components/parameters/OrderId'
@@ -149,7 +149,7 @@ paths:
       operationId: updateShippingMethod
       tags:
       - Orders
-      summary: Update the shipping method of an order.
+      summary: Update the shipping method of an order
       parameters:
       - $ref: '#/components/parameters/OrderId'
       requestBody:
@@ -175,7 +175,7 @@ paths:
       operationId: updateRecipient
       tags:
       - Orders
-      summary: Update the recipient of an order.
+      summary: Update the recipient of an order
       parameters:
       - $ref: '#/components/parameters/OrderId'
       requestBody:
@@ -196,7 +196,7 @@ paths:
       operationId: updateMetadata
       tags:
       - Orders
-      summary: Update the metadata of an order.
+      summary: Update the metadata of an order
       parameters:
       - $ref: '#/components/parameters/OrderId'
       requestBody:
@@ -218,13 +218,6 @@ paths:
                 $ref: '#/components/schemas/ActionOutcomeResponse'
 components:
   schemas:
-    OrderResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        order:
-          $ref: '#/components/schemas/Order'
     ShippingMethod:
       type: string
       description: The shipping service level for the order.
@@ -234,123 +227,6 @@ components:
       - StandardPlus
       - Express
       - Overnight
-    Shipment:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-        carrier:
-          type: object
-          additionalProperties: true
-        dispatchDate:
-          type: string
-          format: date-time
-        tracking:
-          type: object
-          additionalProperties: true
-        fulfillmentLocation:
-          type: object
-          additionalProperties: true
-        items:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    CreateOrderRequest:
-      type: object
-      required:
-      - shippingMethod
-      - recipient
-      - items
-      properties:
-        merchantReference:
-          type: string
-        shippingMethod:
-          $ref: '#/components/schemas/ShippingMethod'
-        idempotencyKey:
-          type: string
-        callbackUrl:
-          type: string
-          description: URL to which Prodigi posts order status callbacks.
-        recipient:
-          $ref: '#/components/schemas/Recipient'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItem'
-        metadata:
-          type: object
-          additionalProperties: true
-        branding:
-          type: object
-          additionalProperties: true
-    OrderActionsResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        cancel:
-          type: string
-          description: Availability of the cancel action.
-        changeRecipientDetails:
-          type: string
-        changeShippingMethod:
-          type: string
-        changeMetadata:
-          type: string
-    Cost:
-      type: object
-      properties:
-        amount:
-          type: string
-        currency:
-          type: string
-    ActionOutcomeResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        order:
-          $ref: '#/components/schemas/Order'
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
-    Address:
-      type: object
-      required:
-      - line1
-      - townOrCity
-      - postalOrZipCode
-      - countryCode
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        townOrCity:
-          type: string
-        stateOrCounty:
-          type: string
-        postalOrZipCode:
-          type: string
-        countryCode:
-          type: string
-          description: Two-letter ISO country code.
     Order:
       type: object
       properties:
@@ -397,6 +273,107 @@ components:
         packingSlip:
           type: object
           additionalProperties: true
+    Address:
+      type: object
+      required:
+      - line1
+      - townOrCity
+      - postalOrZipCode
+      - countryCode
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        townOrCity:
+          type: string
+        stateOrCounty:
+          type: string
+        postalOrZipCode:
+          type: string
+        countryCode:
+          type: string
+          description: Two-letter ISO country code.
+    OrderStatus:
+      type: object
+      properties:
+        stage:
+          type: string
+          enum:
+          - InProgress
+          - Complete
+          - Cancelled
+        issues:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        details:
+          type: object
+          additionalProperties: true
+    OrderActionsResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        cancel:
+          type: string
+          description: Availability of the cancel action.
+        changeRecipientDetails:
+          type: string
+        changeShippingMethod:
+          type: string
+        changeMetadata:
+          type: string
+    Cost:
+      type: object
+      properties:
+        amount:
+          type: string
+        currency:
+          type: string
+    ActionOutcomeResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        order:
+          $ref: '#/components/schemas/Order'
+    CreateOrderRequest:
+      type: object
+      required:
+      - shippingMethod
+      - recipient
+      - items
+      properties:
+        merchantReference:
+          type: string
+        shippingMethod:
+          $ref: '#/components/schemas/ShippingMethod'
+        idempotencyKey:
+          type: string
+        callbackUrl:
+          type: string
+          description: URL to which Prodigi posts order status callbacks.
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        metadata:
+          type: object
+          additionalProperties: true
+        branding:
+          type: object
+          additionalProperties: true
+    OrderResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        order:
+          $ref: '#/components/schemas/Order'
     Recipient:
       type: object
       required:
@@ -411,6 +388,15 @@ components:
           type: string
         address:
           $ref: '#/components/schemas/Address'
+    OrderListResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
     OrderItem:
       type: object
       required:
@@ -440,32 +426,46 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Asset'
-    OrderStatus:
+    Shipment:
       type: object
       properties:
-        stage:
+        id:
           type: string
-          enum:
-          - InProgress
-          - Complete
-          - Cancelled
-        issues:
+        status:
+          type: string
+        carrier:
+          type: object
+          additionalProperties: true
+        dispatchDate:
+          type: string
+          format: date-time
+        tracking:
+          type: object
+          additionalProperties: true
+        fulfillmentLocation:
+          type: object
+          additionalProperties: true
+        items:
           type: array
           items:
             type: object
             additionalProperties: true
-        details:
-          type: object
-          additionalProperties: true
-    OrderListResponse:
+    Asset:
       type: object
+      required:
+      - printArea
       properties:
-        outcome:
+        printArea:
           type: string
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
   parameters:
     OrderId:
       name: orderId

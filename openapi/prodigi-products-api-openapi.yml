@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Prodigi Print Orders Products API
+  title: Prodigi Print Products API
   description: The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.
   termsOfService: https://www.prodigi.com/terms/
   contact:
@@ -24,7 +24,7 @@ paths:
       operationId: getProductDetails
       tags:
       - Products
-      summary: Get product details for a SKU.
+      summary: Get product details for a SKU
       description: Returns all available data for a SKU, including available destinations, attributes, and required assets and dimensions.
       parameters:
       - name: sku

@@ -1,9 +1,7 @@
 {
   "provider": "prodigi",
   "sources": [
-    "prodigi-orders-api-openapi.yml",
-    "prodigi-products-api-openapi.yml",
-    "prodigi-quotes-api-openapi.yml"
+    "_original/prodigi-openapi.yml"
   ],
   "outputs": [
     "prodigi-orders-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "prodigi-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "prodigi-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prodigi-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "prodigi-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

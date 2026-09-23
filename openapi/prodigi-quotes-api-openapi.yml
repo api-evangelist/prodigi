@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Prodigi Print Orders Quotes API
+  title: Prodigi Print Quotes API
   description: The Prodigi Print API (v4.0) is a RESTful, JSON-based API for global print-on-demand fulfillment. It lets merchants create and manage print orders, request real-time quotes for pricing and shipping, and query the product catalogue by SKU. Orders progress through Prodigi's fulfillment stages, with per-order callbacks pushing status and shipment updates to a merchant-supplied callback URL.
   termsOfService: https://www.prodigi.com/terms/
   contact:
@@ -24,7 +24,7 @@ paths:
       operationId: createQuote
       tags:
       - Quotes
-      summary: Get a quote.
+      summary: Get a quote
       description: Returns an array of quotes, each providing a breakdown of pricing, lab allocation, and shipping arrangements for a given set of items, a destination country, and a shipping method.
       requestBody:
         required: true
@@ -43,33 +43,15 @@ paths:
           description: Invalid request.
 components:
   schemas:
-    QuoteRequest:
+    QuoteResponse:
       type: object
-      required:
-      - destinationCountryCode
-      - items
       properties:
-        shippingMethod:
-          $ref: '#/components/schemas/ShippingMethod'
-        destinationCountryCode:
+        outcome:
           type: string
-          description: Two-letter ISO country code for the shipping destination.
-        currencyCode:
-          type: string
-          description: Three-letter ISO currency code for the returned costs.
-        items:
+        quotes:
           type: array
           items:
-            $ref: '#/components/schemas/QuoteItem'
-    ShippingMethod:
-      type: string
-      description: The shipping service level for the order.
-      enum:
-      - Budget
-      - Standard
-      - StandardPlus
-      - Express
-      - Overnight
+            $ref: '#/components/schemas/Quote'
     Cost:
       type: object
       properties:
@@ -77,40 +59,6 @@ components:
           type: string
         currency:
           type: string
-    QuoteItem:
-      type: object
-      required:
-      - sku
-      - copies
-      - assets
-      properties:
-        sku:
-          type: string
-        copies:
-          type: integer
-        attributes:
-          type: object
-          additionalProperties: true
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
     Quote:
       type: object
       properties:
@@ -133,15 +81,67 @@ components:
           items:
             type: object
             additionalProperties: true
-    QuoteResponse:
+    QuoteItem:
       type: object
+      required:
+      - sku
+      - copies
+      - assets
       properties:
-        outcome:
+        sku:
           type: string
-        quotes:
+        copies:
+          type: integer
+        attributes:
+          type: object
+          additionalProperties: true
+        assets:
           type: array
           items:
-            $ref: '#/components/schemas/Quote'
+            $ref: '#/components/schemas/Asset'
+    ShippingMethod:
+      type: string
+      description: The shipping service level for the order.
+      enum:
+      - Budget
+      - Standard
+      - StandardPlus
+      - Express
+      - Overnight
+    QuoteRequest:
+      type: object
+      required:
+      - destinationCountryCode
+      - items
+      properties:
+        shippingMethod:
+          $ref: '#/components/schemas/ShippingMethod'
+        destinationCountryCode:
+          type: string
+          description: Two-letter ISO country code for the shipping destination.
+        currencyCode:
+          type: string
+          description: Three-letter ISO currency code for the returned costs.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteItem'
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
