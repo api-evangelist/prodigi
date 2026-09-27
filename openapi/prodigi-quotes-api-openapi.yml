@@ -52,6 +52,49 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Quote'
+    QuoteRequest:
+      type: object
+      required:
+      - destinationCountryCode
+      - items
+      properties:
+        shippingMethod:
+          $ref: '#/components/schemas/ShippingMethod'
+        destinationCountryCode:
+          type: string
+          description: Two-letter ISO country code for the shipping destination.
+        currencyCode:
+          type: string
+          description: Three-letter ISO currency code for the returned costs.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteItem'
+    ShippingMethod:
+      type: string
+      description: The shipping service level for the order.
+      enum:
+      - Budget
+      - Standard
+      - StandardPlus
+      - Express
+      - Overnight
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
     Cost:
       type: object
       properties:
@@ -99,49 +142,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Asset'
-    ShippingMethod:
-      type: string
-      description: The shipping service level for the order.
-      enum:
-      - Budget
-      - Standard
-      - StandardPlus
-      - Express
-      - Overnight
-    QuoteRequest:
-      type: object
-      required:
-      - destinationCountryCode
-      - items
-      properties:
-        shippingMethod:
-          $ref: '#/components/schemas/ShippingMethod'
-        destinationCountryCode:
-          type: string
-          description: Two-letter ISO country code for the shipping destination.
-        currencyCode:
-          type: string
-          description: Three-letter ISO currency code for the returned costs.
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuoteItem'
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
