@@ -218,37 +218,6 @@ paths:
                 $ref: '#/components/schemas/ActionOutcomeResponse'
 components:
   schemas:
-    Shipment:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-        carrier:
-          type: object
-          additionalProperties: true
-        dispatchDate:
-          type: string
-          format: date-time
-        tracking:
-          type: object
-          additionalProperties: true
-        fulfillmentLocation:
-          type: object
-          additionalProperties: true
-        items:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    OrderResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        order:
-          $ref: '#/components/schemas/Order'
     OrderStatus:
       type: object
       properties:
@@ -275,6 +244,85 @@ components:
       - StandardPlus
       - Express
       - Overnight
+    OrderActionsResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        cancel:
+          type: string
+          description: Availability of the cancel action.
+        changeRecipientDetails:
+          type: string
+        changeShippingMethod:
+          type: string
+        changeMetadata:
+          type: string
+    Address:
+      type: object
+      required:
+      - line1
+      - townOrCity
+      - postalOrZipCode
+      - countryCode
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        townOrCity:
+          type: string
+        stateOrCounty:
+          type: string
+        postalOrZipCode:
+          type: string
+        countryCode:
+          type: string
+          description: Two-letter ISO country code.
+    OrderListResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    ActionOutcomeResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        order:
+          $ref: '#/components/schemas/Order'
+    CreateOrderRequest:
+      type: object
+      required:
+      - shippingMethod
+      - recipient
+      - items
+      properties:
+        merchantReference:
+          type: string
+        shippingMethod:
+          $ref: '#/components/schemas/ShippingMethod'
+        idempotencyKey:
+          type: string
+        callbackUrl:
+          type: string
+          description: URL to which Prodigi posts order status callbacks.
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        metadata:
+          type: object
+          additionalProperties: true
+        branding:
+          type: object
+          additionalProperties: true
     Cost:
       type: object
       properties:
@@ -282,6 +330,42 @@ components:
           type: string
         currency:
           type: string
+    OrderItem:
+      type: object
+      required:
+      - sku
+      - copies
+      - sizing
+      - assets
+      properties:
+        merchantReference:
+          type: string
+        sku:
+          type: string
+        copies:
+          type: integer
+        sizing:
+          type: string
+          enum:
+          - fillPrintArea
+          - fitPrintArea
+          - stretchToPrintArea
+        attributes:
+          type: object
+          additionalProperties: true
+        recipientCost:
+          $ref: '#/components/schemas/Cost'
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+    OrderResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        order:
+          $ref: '#/components/schemas/Order'
     Asset:
       type: object
       required:
@@ -298,6 +382,44 @@ components:
         pageCount:
           type: integer
           description: Number of pages; required for photobook products.
+    Recipient:
+      type: object
+      required:
+      - name
+      - address
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        carrier:
+          type: object
+          additionalProperties: true
+        dispatchDate:
+          type: string
+          format: date-time
+        tracking:
+          type: object
+          additionalProperties: true
+        fulfillmentLocation:
+          type: object
+          additionalProperties: true
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
     Order:
       type: object
       properties:
@@ -342,128 +464,6 @@ components:
           type: object
           additionalProperties: true
         packingSlip:
-          type: object
-          additionalProperties: true
-    Recipient:
-      type: object
-      required:
-      - name
-      - address
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        phoneNumber:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-    OrderActionsResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        cancel:
-          type: string
-          description: Availability of the cancel action.
-        changeRecipientDetails:
-          type: string
-        changeShippingMethod:
-          type: string
-        changeMetadata:
-          type: string
-    ActionOutcomeResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        order:
-          $ref: '#/components/schemas/Order'
-    Address:
-      type: object
-      required:
-      - line1
-      - townOrCity
-      - postalOrZipCode
-      - countryCode
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        townOrCity:
-          type: string
-        stateOrCounty:
-          type: string
-        postalOrZipCode:
-          type: string
-        countryCode:
-          type: string
-          description: Two-letter ISO country code.
-    OrderItem:
-      type: object
-      required:
-      - sku
-      - copies
-      - sizing
-      - assets
-      properties:
-        merchantReference:
-          type: string
-        sku:
-          type: string
-        copies:
-          type: integer
-        sizing:
-          type: string
-          enum:
-          - fillPrintArea
-          - fitPrintArea
-          - stretchToPrintArea
-        attributes:
-          type: object
-          additionalProperties: true
-        recipientCost:
-          $ref: '#/components/schemas/Cost'
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-    OrderListResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-    CreateOrderRequest:
-      type: object
-      required:
-      - shippingMethod
-      - recipient
-      - items
-      properties:
-        merchantReference:
-          type: string
-        shippingMethod:
-          $ref: '#/components/schemas/ShippingMethod'
-        idempotencyKey:
-          type: string
-        callbackUrl:
-          type: string
-          description: URL to which Prodigi posts order status callbacks.
-        recipient:
-          $ref: '#/components/schemas/Recipient'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItem'
-        metadata:
-          type: object
-          additionalProperties: true
-        branding:
           type: object
           additionalProperties: true
   parameters:

@@ -43,15 +43,6 @@ paths:
           description: Invalid request.
 components:
   schemas:
-    QuoteResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        quotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Quote'
     QuoteRequest:
       type: object
       required:
@@ -79,29 +70,6 @@ components:
       - StandardPlus
       - Express
       - Overnight
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
-    Cost:
-      type: object
-      properties:
-        amount:
-          type: string
-        currency:
-          type: string
     Quote:
       type: object
       properties:
@@ -124,6 +92,38 @@ components:
           items:
             type: object
             additionalProperties: true
+    Cost:
+      type: object
+      properties:
+        amount:
+          type: string
+        currency:
+          type: string
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
+    QuoteResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        quotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Quote'
     QuoteItem:
       type: object
       required:
