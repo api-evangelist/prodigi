@@ -43,24 +43,13 @@ paths:
           description: Invalid request.
 components:
   schemas:
-    QuoteRequest:
+    Cost:
       type: object
-      required:
-      - destinationCountryCode
-      - items
       properties:
-        shippingMethod:
-          $ref: '#/components/schemas/ShippingMethod'
-        destinationCountryCode:
+        amount:
           type: string
-          description: Two-letter ISO country code for the shipping destination.
-        currencyCode:
+        currency:
           type: string
-          description: Three-letter ISO currency code for the returned costs.
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuoteItem'
     ShippingMethod:
       type: string
       description: The shipping service level for the order.
@@ -70,6 +59,22 @@ components:
       - StandardPlus
       - Express
       - Overnight
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
     Quote:
       type: object
       properties:
@@ -92,29 +97,6 @@ components:
           items:
             type: object
             additionalProperties: true
-    Cost:
-      type: object
-      properties:
-        amount:
-          type: string
-        currency:
-          type: string
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
     QuoteResponse:
       type: object
       properties:
@@ -124,6 +106,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Quote'
+    QuoteRequest:
+      type: object
+      required:
+      - destinationCountryCode
+      - items
+      properties:
+        shippingMethod:
+          $ref: '#/components/schemas/ShippingMethod'
+        destinationCountryCode:
+          type: string
+          description: Two-letter ISO country code for the shipping destination.
+        currencyCode:
+          type: string
+          description: Three-letter ISO currency code for the returned costs.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteItem'
     QuoteItem:
       type: object
       required:
