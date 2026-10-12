@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/prodigi/integrations
+- https://n8n.io/integrations/prodigi/
+- https://composio.dev/toolkits/prodigi
+- https://monid.ai/tools/prodigi
+checked:
+- https://composio.dev/toolkits/prodigi
+- https://monid.ai/tools/prodigi
+- https://n8n.io/integrations/prodigi/
+- https://zapier.com/apps/prodigi/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
