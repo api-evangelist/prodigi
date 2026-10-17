@@ -43,38 +43,6 @@ paths:
           description: Invalid request.
 components:
   schemas:
-    Cost:
-      type: object
-      properties:
-        amount:
-          type: string
-        currency:
-          type: string
-    ShippingMethod:
-      type: string
-      description: The shipping service level for the order.
-      enum:
-      - Budget
-      - Standard
-      - StandardPlus
-      - Express
-      - Overnight
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
     Quote:
       type: object
       properties:
@@ -97,15 +65,15 @@ components:
           items:
             type: object
             additionalProperties: true
-    QuoteResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        quotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Quote'
+    ShippingMethod:
+      type: string
+      description: The shipping service level for the order.
+      enum:
+      - Budget
+      - Standard
+      - StandardPlus
+      - Express
+      - Overnight
     QuoteRequest:
       type: object
       required:
@@ -124,6 +92,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QuoteItem'
+    QuoteResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        quotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Quote'
+    Cost:
+      type: object
+      properties:
+        amount:
+          type: string
+        currency:
+          type: string
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
     QuoteItem:
       type: object
       required:

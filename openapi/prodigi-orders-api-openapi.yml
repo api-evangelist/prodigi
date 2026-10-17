@@ -218,6 +218,29 @@ paths:
                 $ref: '#/components/schemas/ActionOutcomeResponse'
 components:
   schemas:
+    OrderActionsResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        cancel:
+          type: string
+          description: Availability of the cancel action.
+        changeRecipientDetails:
+          type: string
+        changeShippingMethod:
+          type: string
+        changeMetadata:
+          type: string
+    ShippingMethod:
+      type: string
+      description: The shipping service level for the order.
+      enum:
+      - Budget
+      - Standard
+      - StandardPlus
+      - Express
+      - Overnight
     Order:
       type: object
       properties:
@@ -264,119 +287,6 @@ components:
         packingSlip:
           type: object
           additionalProperties: true
-    Address:
-      type: object
-      required:
-      - line1
-      - townOrCity
-      - postalOrZipCode
-      - countryCode
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        townOrCity:
-          type: string
-        stateOrCounty:
-          type: string
-        postalOrZipCode:
-          type: string
-        countryCode:
-          type: string
-          description: Two-letter ISO country code.
-    OrderItem:
-      type: object
-      required:
-      - sku
-      - copies
-      - sizing
-      - assets
-      properties:
-        merchantReference:
-          type: string
-        sku:
-          type: string
-        copies:
-          type: integer
-        sizing:
-          type: string
-          enum:
-          - fillPrintArea
-          - fitPrintArea
-          - stretchToPrintArea
-        attributes:
-          type: object
-          additionalProperties: true
-        recipientCost:
-          $ref: '#/components/schemas/Cost'
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-    Cost:
-      type: object
-      properties:
-        amount:
-          type: string
-        currency:
-          type: string
-    OrderActionsResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        cancel:
-          type: string
-          description: Availability of the cancel action.
-        changeRecipientDetails:
-          type: string
-        changeShippingMethod:
-          type: string
-        changeMetadata:
-          type: string
-    ShippingMethod:
-      type: string
-      description: The shipping service level for the order.
-      enum:
-      - Budget
-      - Standard
-      - StandardPlus
-      - Express
-      - Overnight
-    Asset:
-      type: object
-      required:
-      - printArea
-      properties:
-        printArea:
-          type: string
-          description: The print area this asset applies to, typically "default".
-        url:
-          type: string
-          description: Publicly reachable URL of the print-ready asset.
-        md5Hash:
-          type: string
-        pageCount:
-          type: integer
-          description: Number of pages; required for photobook products.
-    OrderStatus:
-      type: object
-      properties:
-        stage:
-          type: string
-          enum:
-          - InProgress
-          - Complete
-          - Cancelled
-        issues:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        details:
-          type: object
-          additionalProperties: true
     Recipient:
       type: object
       required:
@@ -391,13 +301,6 @@ components:
           type: string
         address:
           $ref: '#/components/schemas/Address'
-    ActionOutcomeResponse:
-      type: object
-      properties:
-        outcome:
-          type: string
-        order:
-          $ref: '#/components/schemas/Order'
     OrderListResponse:
       type: object
       properties:
@@ -435,6 +338,66 @@ components:
         branding:
           type: object
           additionalProperties: true
+    OrderItem:
+      type: object
+      required:
+      - sku
+      - copies
+      - sizing
+      - assets
+      properties:
+        merchantReference:
+          type: string
+        sku:
+          type: string
+        copies:
+          type: integer
+        sizing:
+          type: string
+          enum:
+          - fillPrintArea
+          - fitPrintArea
+          - stretchToPrintArea
+        attributes:
+          type: object
+          additionalProperties: true
+        recipientCost:
+          $ref: '#/components/schemas/Cost'
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+    ActionOutcomeResponse:
+      type: object
+      properties:
+        outcome:
+          type: string
+        order:
+          $ref: '#/components/schemas/Order'
+    OrderStatus:
+      type: object
+      properties:
+        stage:
+          type: string
+          enum:
+          - InProgress
+          - Complete
+          - Cancelled
+        issues:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        details:
+          type: object
+          additionalProperties: true
+    Cost:
+      type: object
+      properties:
+        amount:
+          type: string
+        currency:
+          type: string
     Shipment:
       type: object
       properties:
@@ -459,6 +422,43 @@ components:
           items:
             type: object
             additionalProperties: true
+    Asset:
+      type: object
+      required:
+      - printArea
+      properties:
+        printArea:
+          type: string
+          description: The print area this asset applies to, typically "default".
+        url:
+          type: string
+          description: Publicly reachable URL of the print-ready asset.
+        md5Hash:
+          type: string
+        pageCount:
+          type: integer
+          description: Number of pages; required for photobook products.
+    Address:
+      type: object
+      required:
+      - line1
+      - townOrCity
+      - postalOrZipCode
+      - countryCode
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        townOrCity:
+          type: string
+        stateOrCounty:
+          type: string
+        postalOrZipCode:
+          type: string
+        countryCode:
+          type: string
+          description: Two-letter ISO country code.
     OrderResponse:
       type: object
       properties:
