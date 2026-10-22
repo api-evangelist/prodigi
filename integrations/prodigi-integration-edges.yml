@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/prodigi/integrations
 - https://n8n.io/integrations/prodigi/
@@ -10,7 +10,25 @@ checked:
 - https://monid.ai/tools/prodigi
 - https://n8n.io/integrations/prodigi/
 - https://zapier.com/apps/prodigi/integrations
+- wix/integrations/wix-integration-edges.yml
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Wix (own)
+  partner: wix
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.wix.com/app-market/developer/prodigi-ltd
+  mirror_of: wix/integrations/wix-integration-edges.yml
+  apps:
+  - Prodigi Print on Demand
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Print on Demand
 templates: []
