@@ -1,4 +1,4 @@
-# Prodigi (prodigi)
+# Prodigi
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,116 +66,120 @@
 
 Prodigi is a global print-on-demand and dropshipping platform that connects merchants to a worldwide network of print labs. The Prodigi Print API (v4.0) lets developers create and manage print orders, fetch real-time quotes, and query the product catalogue, with print and shipping fulfilled at wholesale prices direct from the manufacturer.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/prodigi/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/prodigi/refs/heads/main/apis.yml)
+**Areas:** Print on Demand · Printing · Dropshipping · Fulfillment · E-Commerce
 
-## Tags
+## Prodigi on APIs.io
 
-- Print on Demand
-- Printing
-- Dropshipping
-- Fulfillment
-- E-commerce
+Everything profiled for Prodigi is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/prodigi/](https://apis.io/providers/prodigi/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-06-25
-- **Modified:** 2026-06-25
+- [Prodigi Orders API](https://apis.io/apis/prodigi/prodigi-orders-api/) — Create, retrieve, list, and act on print orders.
+- [Prodigi Products API](https://apis.io/apis/prodigi/prodigi-products-api/) — Query the product catalogue by SKU.
+- [Prodigi Quotes API](https://apis.io/apis/prodigi/prodigi-quotes-api/) — Request pricing and shipping breakdowns before ordering.
 
-## APIs
+### Published properties
 
-### Prodigi Orders API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create, retrieve, and list print orders, and run order actions - cancel, update shipping method, update recipient, and update metadata - across Prodigi's global print-on-demand fulfillment network.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.prodigi.com/print-api/docs/reference/](https://www.prodigi.com/print-api/docs/reference/)
-- **Base URL:** `https://api.prodigi.com/v4.0`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Prodigi Agentic Access](https://apis.io/agentic-access/prodigi/prodigi-agentic-access/)
 
-- Orders
-- Fulfillment
-- Print on Demand
+#### Collections (4)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.prodigi.com/print-api/docs/reference/)
-- [API Reference](https://www.prodigi.com/print-api/docs/reference/)
-- [OpenAPI](openapi/prodigi-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/prodigi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/prodigi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Prodigi Print API](https://apis.io/collections/prodigi/open-prodigi/)
+- [Prodigi Print Orders API](https://apis.io/collections/prodigi/open-prodigi-orders-api/)
+- [Prodigi Print Orders Products API](https://apis.io/collections/prodigi/open-prodigi-products-api/)
+- [Prodigi Print Orders Quotes API](https://apis.io/collections/prodigi/open-prodigi-quotes-api/)
 
-### Prodigi Quotes API
+#### Security (2)
 
-Returns a breakdown of pricing, lab allocation, and shipping arrangements for a given set of items and destination, before an order is placed.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.prodigi.com/print-api/docs/reference/](https://www.prodigi.com/print-api/docs/reference/)
-- **Base URL:** `https://api.prodigi.com/v4.0`
+- [Prodigi Authentication](https://apis.io/security/prodigi/prodigi-authentication/)
+- [Prodigi Domain Security](https://apis.io/security/prodigi/prodigi-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Quotes
-- Pricing
-- Shipping
+Published plans, tiers and prices.
 
-#### Properties
+- [Prodigi Plans Pricing](https://apis.io/plans/prodigi/prodigi-plans-pricing/)
 
-- [Documentation](https://www.prodigi.com/print-api/docs/reference/)
-- [API Reference](https://www.prodigi.com/print-api/docs/reference/)
-- [OpenAPI](openapi/prodigi-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/prodigi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/prodigi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Prodigi Product Details API
+Published request limits.
 
-Queries the core product catalogue by SKU, returning price, valid attributes, available destinations, and asset and dimension requirements for each product.
+- [Prodigi Rate Limits](https://apis.io/rate-limits/prodigi/prodigi-rate-limits/)
 
-- **Human URL:** [https://www.prodigi.com/print-api/docs/reference/](https://www.prodigi.com/print-api/docs/reference/)
-- **Base URL:** `https://api.prodigi.com/v4.0`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Products
-- Catalogue
-- SKU
+- [Prodigi Finops](https://apis.io/finops/prodigi/prodigi-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://www.prodigi.com/print-api/docs/reference/)
-- [API Reference](https://www.prodigi.com/print-api/docs/reference/)
-- [OpenAPI](openapi/prodigi-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/prodigi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/prodigi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Prodigi Webhooks / Callbacks
-
-Per-order callbacks delivered to a merchant-supplied callbackUrl that push order, status, and shipment updates as an order moves through Prodigi's fulfillment stages.
-
-- **Human URL:** [https://www.prodigi.com/print-api/docs/reference/](https://www.prodigi.com/print-api/docs/reference/)
-- **Base URL:** `https://api.prodigi.com/v4.0`
-
-#### Tags
-
-- Webhooks
-- Callbacks
-- Events
-
-#### Properties
-
-- [Documentation](https://www.prodigi.com/print-api/docs/reference/)
-- [API Reference](https://www.prodigi.com/print-api/docs/reference/)
-- [OpenAPI](openapi/prodigi-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/Prodigi-Group)
-- [LinkedIn](https://www.linkedin.com/company/prodigi)
 - [Website](https://www.prodigi.com)
 - [Documentation](https://www.prodigi.com/print-api/docs/)
-- [Plans](plans/prodigi-plans-pricing.yml)
-- [Rate Limits](rate-limits/prodigi-rate-limits.yml)
-- [Fin Ops](finops/prodigi-finops.yml)
+- [Blog](https://www.prodigi.com/blog/)
+- [GitHub](https://github.com/Prodigi-Group)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 49.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
+
+**Agent readiness 26.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/prodigi/](https://apis.io/providers/prodigi/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Prodigi: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/prodigi/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
